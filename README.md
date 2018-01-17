@@ -12,17 +12,26 @@ Include
 ================================================================================
 
 jQuery (if already included - ignore)
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<br/>
+<code>
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</code>
 
 Release Version (minified for production):
-
-<link href="dist/css/mc-selector-<THEME>.min.css" type="text/css"/>
-<script src="dist/js/mc-selector.min.js" type="text/javascript"></script>
+<br/>
+<code>
+&lt;link href=&quot;dist/css/mc-selector-&lt;THEME&gt;.min.css&quot; type=&quot;text/css&quot;/&gt;
+<br/>
+&lt;script src=&quot;dist/js/mc-selector.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</code>
 
 Source Code Version:
-
-<link href="src/css/mc-selector-<THEME>.css" type="text/css"/>
-<script src="src/js/mc-selector.js" type="text/javascript"></script>
+<br/>
+<code>
+&lt;link href=&quot;src/css/mc-selector-&lt;THEME&gt;.css&quot; type=&quot;text/css&quot;/&gt;
+<br/>
+&lt;script src=&quot;src/js/mc-selector.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</code>
 
 Themes: dark, light, green, blue, orange.
 
@@ -31,34 +40,53 @@ Examples
 
 
 Example #1 (Basic use - based on existing SELECT):
+<br/>
 <code>
-    <select data-attach="mc-selector">
-    <option value="EN" selected="selected">English</option>
-    <option value="DE">German</option>
-    <option value="FR">French</option>
-    <option value="RU">Russian</option>
-    </select>
+    &lt;select data-attach=&quot;mc-selector&quot;&gt;
+<br/>    
+    &lt;option value=&quot;EN&quot; selected=&quot;selected&quot;&gt;English&lt;/option&gt;
+<br/>    
+    &lt;option value=&quot;DE&quot;&gt;German&lt;/option&gt;
+<br/>    
+    &lt;option value=&quot;FR&quot;&gt;French&lt;/option&gt;
+<br/>    
+    &lt;option value=&quot;RU&quot;&gt;Russian&lt;/option&gt;
+<br/>
+    &lt;/select&gt;
 </code>
 
 
 Example #2 (Basic use html with javascript options passed through data-attach-options attribute):
-<code>
-  <select data-attach="mc-selector" data-attach-options='{selection:"EN",data:[{label:"English",value:"EN"},{label:"German",value:"DE"},{label:"French",value:"FR"},{label:"Russian",value:"RU"}]}'>
-  </select>
-</code>
+
+<br/><code>
+  &lt;select data-attach=&quot;mc-selector&quot; data-attach-options='{selection:&quot;EN&quot;,data:[{label:&quot;English&quot;,value:&quot;EN&quot;},{label:&quot;German&quot;,value:&quot;DE&quot;},{label:&quot;French&quot;,value:&quot;FR&quot;},{label:&quot;Russian&quot;,value:&quot;RU&quot;}]}'&gt;
+<br/>  
+  &lt;/select&gt;
+</code>  
+
 
 Example #3 (Attach to existing object using Javascript)
+<br/>
 <code>
-  <select class="language"></select>
-  <!-- .... ->
-  <script type="text/javascript">
+  &lt;select class=&quot;language&quot;&gt;&lt;/select&gt;
+<br/>  
+  &lt;!-- .... -&gt;
+<br/>  
+  &lt;script type=&quot;text/javascript&quot;&gt;
+<br/>  
     jQuery(document).ready(function(){
-      jQuery("select.language").McSelector({
-        selection:"EN",
-        data: [{label:"English",value:"EN"},{label:"German",value:"DE"},{label:"French",value:"FR"},{label:"Russian",value:"RU"}]
+<br/>    
+      jQuery(&quot;select.language&quot;).McSelector({
+<br/>      
+        selection:&quot;EN&quot;,
+<br/>        
+        data: [{label:&quot;English&quot;,value:&quot;EN&quot;},{label:&quot;German&quot;,value:&quot;DE&quot;},{label:&quot;French&quot;,value:&quot;FR&quot;},{label:&quot;Russian&quot;,value:&quot;RU&quot;}]
+<br/>        
       });
+<br/>      
     });
-  </script>
+<br/>    
+  &lt;/script&gt;
 </code>
 
 
@@ -67,7 +95,7 @@ Versions
 
 v.1.00 - 17 January 2018
 
-This version is for <b>Personal Use Only</b>! 
+This version is for &lt;b&gt;Personal Use Only&lt;/b&gt;! 
 See PersonalLicense.htm for details.
 
 You can order commercial version here:
