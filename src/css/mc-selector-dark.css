@@ -1,2 +1,13 @@
-.mcselector{
+.mc-hidden{
+    display: none;
+}
+.mc-selector-container{
+    display: inline-block;
+    overflow: hidden;
+}
+
+.mc-selector-select{
+    display: inline-block;
+    overflow: hidden;
+
 }
