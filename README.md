@@ -20,7 +20,7 @@ jQuery (if already included - ignore)
 Release Version (minified for production):
 <br/>
 <code>
-&lt;link href=&quot;dist/css/mc-selector-&lt;THEME&gt;.min.css&quot; type=&quot;text/css&quot;/&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;dist/css/mc-selector-&lt;THEME&gt;.min.css&quot; /&gt;
 <br/>
 &lt;script src=&quot;dist/js/mc-selector.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
 </code>
@@ -28,7 +28,7 @@ Release Version (minified for production):
 Source Code Version:
 <br/>
 <code>
-&lt;link href=&quot;src/css/mc-selector-&lt;THEME&gt;.css&quot; type=&quot;text/css&quot;/&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;src/css/mc-selector-&lt;THEME&gt;.css&quot; /&gt;
 <br/>
 &lt;script src=&quot;src/js/mc-selector.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
 </code>

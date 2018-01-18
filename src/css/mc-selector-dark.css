@@ -1,13 +1,52 @@
 .mc-hidden{
     display: none;
 }
-.mc-selector-container{
-    display: inline-block;
-    overflow: hidden;
-}
-
 .mc-selector-select{
-    display: inline-block;
-    overflow: hidden;
-
+  position:         absolute;
+  background: 		#cccccc;
+  color:    		#000000;
+  border-radius:	3px;
+  border:	    	1px solid #000000;
+  display:          inline-block;
+  vertical-align:   middle;
+  padding:	        5px;
+  font-size:        90%;
+}
+.mc-selector-select span{
+  text-align:       left;
+  float:            left;
+  display:          inline-block
+}
+.mc-selector-select img{
+  text-align:       right;
+  float:            right;
+  display:          inline-block;
+  margin-left:      0.2em;
+  position:         relative;
+  top:			    2px;
+  left:			    2px;
+  z-index:	        1;
+  cursor:			pointer;
+  border:           none;
+}
+.mc-selector-dropdown{
+  display:          block;
+  position:         relative;
+  height:           auto;
+  background: 		#ffffff;
+  color:    		#000000;
+  border-radius:	3px;
+  border:	    	1px solid #000000;
+  z-index:	        10000;
+  width:            auto;
+}
+.mc-selector-list{
+  display:          inline-block;
+  width:            auto;
+  margin:           0;
+  padding:          0;
+  list-style:       none;
+}
+.mc-selector-list li{
+  padding:          0.2em 0.4em;
 }
