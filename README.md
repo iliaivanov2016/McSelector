@@ -94,35 +94,52 @@ Documentation
 jQuery.fn.McSelector:
 
 Functions
-1) function init( params );
-Params object properties:
+<br/>
+<b>function</b> <b>init</b>( <b>params</b> );
+<br/>
+<b>params</b> object properties:
+<br/><br/>
 
-multiple: [<true> || <false>]
-Allows multiple selection. 
-Default false.
+<b>multiple</b>: <b>true</b> || <b>false</b>
+Allows multiple selection if set to <b>true</b>.
+<br/> 
+Default <b>false</b>.
 
-disableAutoSelectFirstElement: [<true> || <false>]
+<b>disableAutoSelectFirstElement</b>: <b>true</b> || <b>false</b>
 Disables automatic selection of first element if nothing selected. 
-Default: false.
+Default: <b>false</b>.
 
 data: Array of item objects
+<code>
 [
+<br/>
 {"label":"<some label", "value": "<some value>", selected: false, disabled: false, icon: ""},
+<br/>
 {"label":"<some label", "value": "<some value>", selected: false, disabled: false, icon: ""},
+<br/>
 ...
+<br/>
 {"label":"<some label", "value": "<some value>", selected: false, disabled: false, icon: ""}
+<br/>
 ]
+</code>
 
-expandIcon: String with path to icon file
+<b>expandIcon</b>: String path to dropdown icon file
 Specifies custom icon to be displayed after current value to show dropdown.
 Default: path to current theme "down.png"
-
-change: function(labels, values, indexes){
+<code>
+<b>change</b>: <b>function</b>(<b>labels</b>, <b>values</b>, <b>indexes</b>){
+<br/>
+// ... Your code
 }
+</code>
+
 Specifies event handler when selection changes.
 Passes Arrays of labels, values and indexes (0-based index in parent dropdown) of all selected elements. 
 Triggered on first initialization of the McSelector when params loaded.
-Default: null;
+<br/>
+<b>Default</b>: <b>null</b>;
+
 
 Versions
 ================================================================================
