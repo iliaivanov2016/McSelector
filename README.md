@@ -89,6 +89,40 @@ Example #3 (Attach to existing object using Javascript)
   &lt;/script&gt;
 </code>
 
+================================================================================
+Documentation
+jQuery.fn.McSelector:
+
+Functions
+1) function init( params );
+Params object properties:
+
+multiple: [<true> || <false>]
+Allows multiple selection. 
+Default false.
+
+disableAutoSelectFirstElement: [<true> || <false>]
+Disables automatic selection of first element if nothing selected. 
+Default: false.
+
+data: Array of item objects
+[
+{"label":"<some label", "value": "<some value>", selected: false, disabled: false, icon: ""},
+{"label":"<some label", "value": "<some value>", selected: false, disabled: false, icon: ""},
+...
+{"label":"<some label", "value": "<some value>", selected: false, disabled: false, icon: ""}
+]
+
+expandIcon: String with path to icon file
+Specifies custom icon to be displayed after current value to show dropdown.
+Default: path to current theme "down.png"
+
+change: function(labels, values, indexes){
+}
+Specifies event handler when selection changes.
+Passes Arrays of labels, values and indexes (0-based index in parent dropdown) of all selected elements. 
+Triggered on first initialization of the McSelector when params loaded.
+Default: null;
 
 Versions
 ================================================================================

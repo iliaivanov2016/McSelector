@@ -5,35 +5,38 @@
   position:         absolute;
   background: 		#cccccc;
   color:    		#000000;
-  border-radius:	3px;
-  border:	    	1px solid #000000;
+  border-radius:	5px;
+  border-style:   	solid;
+  border-color:     #cccccc;
+  border-width:     1px;
   display:          inline-block;
   vertical-align:   middle;
-  padding:	        5px;
-  font-size:        90%;
+  padding:	        0;
+  margin:	        0;
 }
 .mc-selector-select span{
+  overflow:         hidden !important;
   text-align:       left;
   float:            left;
-  display:          inline-block
+  display:          inline-block !important;
+  white-space:      nowrap !important;
+  text-overflow:    ellipsis;
+  margin:           2px 0px 2px 4px;
 }
 .mc-selector-select img{
   text-align:       right;
   float:            right;
   display:          inline-block;
-  margin-left:      0.2em;
-  position:         relative;
-  top:			    2px;
-  left:			    2px;
-  z-index:	        1;
   cursor:			pointer;
   border:           none;
+  position:         relative;
+  top:              4px;
 }
 .mc-selector-dropdown{
   display:          block;
-  position:         relative;
+  position:         fixed;
   height:           auto;
-  background: 		#ffffff;
+  background: 		#cccccc;
   color:    		#000000;
   border-radius:	3px;
   border:	    	1px solid #000000;
@@ -49,4 +52,11 @@
 }
 .mc-selector-list li{
   padding:          0.2em 0.4em;
+}
+.mc-selector-list li:hover{
+  background: #000099;
+  color:      #ffffff
+}
+.mc-selector-item-active{
+  font-weight: bold;
 }
