@@ -111,22 +111,27 @@ Default: <b>false</b>.
 
 data: Array of item objects
 <code>
+<br/>
 [
 <br/>
-{"label":"<some label", "value": "<some value>", selected: false, disabled: false, icon: ""},
+{"label":"<some label>", "value": "<some value>", selected: false, disabled: false, icon: ""},
 <br/>
-{"label":"<some label", "value": "<some value>", selected: false, disabled: false, icon: ""},
+{"label":"<some label>", "value": "<some value>", selected: false, disabled: false, icon: ""},
 <br/>
 ...
 <br/>
-{"label":"<some label", "value": "<some value>", selected: false, disabled: false, icon: ""}
+{"label":"<some label>", "value": "<some value>", selected: false, disabled: false, icon: ""}
 <br/>
 ]
+<br/>
 </code>
 
 <b>expandIcon</b>: String path to dropdown icon file
 Specifies custom icon to be displayed after current value to show dropdown.
 Default: path to current theme "down.png"
+
+<b>change</b>
+<br/>
 <code>
 <b>change</b>: <b>function</b>(<b>labels</b>, <b>values</b>, <b>indexes</b>){
 <br/>
@@ -139,6 +144,10 @@ Passes Arrays of labels, values and indexes (0-based index in parent dropdown) o
 Triggered on first initialization of the McSelector when params loaded.
 <br/>
 <b>Default</b>: <b>null</b>;
+
+
+<b>selectedClass</b>
+CSS ClassName that will be applied to selected items of dropdown list using jQuery.addClass() function.
 
 
 Versions

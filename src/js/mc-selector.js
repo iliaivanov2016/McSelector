@@ -45,7 +45,7 @@ if (McSelectorDebug && console) console.log(">mc_selector_create",source,params)
 	if (!params.hasOwnProperty("expandIcon"))
 		params["expandIcon"] = McBasePath+"css/icons/down.png";
 	if (params.hasOwnProperty("multiple"))
-		params["multiple"] = !!(params["multiple"]);
+		params["multiple"] =  (params["multiple"] === "multiple") || (!!(params["multiple"]));
 	else
 		params["multiple"] = false;
 	if (!params.hasOwnProperty("disableAutoSelectFirstElement"))
@@ -81,7 +81,16 @@ if (McSelectorDebug && console) console.log("<updateValues: label="+mc_selector.
 			// change text
 			$(mc_selector.select).find("span").html(mc_selector.label);
 			// set original element value
+			var found = -1;
+			if ($(mc_selector.source).prop("tagName") === "SELECT") {
+				var selector = 'option[value="'+mc_selector.value+'"]';
+				if ($(mc_selector.source).find(selector).length <= 0) {
+					$(mc_selector.source).append($("<option/>").prop("value",mc_selector.value).html(mc_selector.label));
+				}
+			}
 			$(mc_selector.source).val(mc_selector.value).trigger("change");
+			// set title for select
+			$(mc_selector.select).prop("title",mc_selector.label);
 			// trigger change function
 			if (mc_selector.params.hasOwnProperty("change") && (!mc_selector.params.change)){
 				try{
@@ -105,9 +114,9 @@ if (McSelectorDebug && console) console.log("<updateValues: label="+mc_selector.
 if (McSelectorDebug && console) console.log(">init",this.params);
 			mc_selector.params["data"].forEach(function (item, index){
 				if (item.selected && (!item.disabled)) {
-					var label = ("" + item.label).htmlEntities();
+					var label = ("" + mc_selector.params["data"][index].label).htmlEntities();
 					mc_selector.labels.push(label);
-					mc_selector.values.push(item.value);
+					mc_selector.values.push(mc_selector.params["data"][index].value);
 					mc_selector.selectedItems.push(index);
 				}
 			});
@@ -124,7 +133,7 @@ if (McSelectorDebug && console) console.log(">init",this.params);
 			mc_selector.updateValues();
 if (McSelectorDebug && console) console.log("1.init values:",mc_selector.values,"value = "+mc_selector.value);
 			// create select element
-			w = $(source).outerWidth();
+			w = $(source).outerWidth() + 16;
 			if (isNaN(w) || (w < 16))
 				w = 16;
 			h = $(source).outerHeight();
@@ -176,7 +185,7 @@ if (McSelectorDebug && console) console.log( "3.init - offset of source element:
 			mc_selector.dropdown = $("<div/>").addClass("mc-selector-dropdown").css({
 				left:			x,
 				top:			y,
-				width:		w +"px"
+				width:		"auto"
 			}).hide();
 			$(mc_selector.select).after(this.dropdown);
 			// create list
@@ -186,10 +195,21 @@ if (McSelectorDebug && console) console.log( "3.init - offset of source element:
 			mc_selector.params.data.forEach(function (item, index){
 				var li = $("<li/>");
 				var label = ("" + item.label).htmlEntities();
+				var html = "";
+				var icon = "" + item.icon;
+console.log("icon = "+icon);
+				if (icon.indexOf(".") >= 0) {
+					html += '<img src="'+icon+'" />&nbsp;'
+console.log("added",html);
+				}
+				html += '<label>'+label+'</label>';
+console.log("html",html);
 				if (item.selected) {
 					$(li).addClass("mc-selector-item-active");
+					if (mc_selector.params.hasOwnProperty("selectedClass"))
+						$(li).addClass(mc_selector.params.selectedClass);
 				}
-				$(li).html( label ).prop("data-index",index).prop("data-value",item.value).prop("selected", item.selected)
+				$(li).html( html ).prop("data-index",index).prop("data-value",item.value).prop("selected", item.selected)
 					.prop("disabled", item.disabled).on("click", function(evt){
 					evt.stopPropagation();
 					evt.preventDefault();
@@ -201,15 +221,17 @@ if (McSelectorDebug && console) console.log("li selIndex = "+selIndex,selItem);
 					if ($(selItem).is(":disabled")) return;
 					selItem.prop( "selected", !($(selItem).is(":selected")) ) ;
 					if (!selItem.is(":selected")) {
-if (McSelectorDebug && console) console.log("deselect selected item selIndex = " + selIndex+" indexOf = "+mc_selector.selectedItems.selIndexOf(selIndex));
+if (McSelectorDebug && console) console.log("deselect selected item selIndex = " + selIndex+" indexOf = "+mc_selector.selectedItems.indexOf(selIndex));
 						// deselected selItem
-						if (mc_selector.selectedItems.selIndexOf(selIndex) >= 0) {
+						if (mc_selector.selectedItems.indexOf(selIndex) >= 0) {
 if (McSelectorDebug && console) console.log("DELETE FROM SELECTIONS index = "+selIndex);
 							mc_selector.selectedItems.splice(selIndex, 1);
 							mc_selector.values.splice(selIndex, 1);
 							mc_selector.labels.splice(selIndex, 1);
 						}
 						$(selItem).removeClass("mc-selector-item-active");
+						if (mc_selector.params.hasOwnProperty("selectedClass"))
+							$(selItem).removeClass(mc_selector.params.selectedClass);
 					} else {
 						// selected selItem
 						if (!mc_selector.params.multiple && (mc_selector.selectedItems.length > 0)) {
@@ -217,6 +239,8 @@ if (McSelectorDebug && console) console.log("DELETE FROM SELECTIONS index = "+se
 							mc_selector.selectedItems.forEach(function (item1, index1){
 								mc_selector.list.children("li").each(function(){
 									$(this).prop("selected", false).removeClass("mc-selector-item-active");
+									if (mc_selector.params.hasOwnProperty("selectedClass"))
+										$(this).removeClass(mc_selector.params.selectedClass);
 								});
 							});
 							mc_selector.selectedItems = [];
@@ -226,8 +250,8 @@ if (McSelectorDebug && console) console.log("DELETE OLD SINGLE SELECTION");
 						}
 						if (mc_selector.selectedItems.indexOf(selIndex) < 0) {
 							mc_selector.selectedItems.push(selIndex);
-							mc_selector.values.push($(selItem).prop("data-value"));
-							mc_selector.labels.push($(selItem).html());
+							mc_selector.values.push(mc_selector.params.data[selIndex].value);
+							mc_selector.labels.push(("" + mc_selector.params.data[selIndex].label).htmlEntities());
 if (McSelectorDebug && console) console.log("ADD TO SELECTIONS index = "+selIndex);
 						}
 						$(selItem).addClass("mc-selector-item-active");
@@ -243,6 +267,8 @@ if (McSelectorDebug && console) console.log("ADD TO SELECTIONS index = "+selInde
 				});
 				// add li item to list
 				$(mc_selector.list).append(li);
+				w = $(li).outerWidth();
+	console.log("li w = "+w);
 			});
 			// add list to dropdown
 			$(mc_selector.dropdown).append(mc_selector.list);
