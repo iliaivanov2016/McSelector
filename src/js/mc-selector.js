@@ -4,9 +4,9 @@ Javascript Standard: ECMAScript 3
 IE 9.0+, Firefox 1.5+
 
 started 17.01.2018
-updated 23.01.2018
+updated 24.01.2018
 
-7 hours
+8 hours
 
 Done:
 Example 1 works. Works like basic select element.
@@ -255,6 +255,8 @@ if (McSelectorDebug && console) console.log("DELETE OLD SINGLE SELECTION");
 if (McSelectorDebug && console) console.log("ADD TO SELECTIONS index = "+selIndex);
 						}
 						$(selItem).addClass("mc-selector-item-active");
+						if (mc_selector.params.hasOwnProperty("selectedClass"))
+							$(li).addClass(mc_selector.params.selectedClass);
 					}
 					mc_selector.updateValues();
 					if (!mc_selector.params.multiple && (mc_selector.selectedItems.length > 0)) {
